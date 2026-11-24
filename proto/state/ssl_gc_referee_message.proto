@@ -1,6 +1,7 @@
 syntax = "proto2";
 
 import "state/ssl_gc_game_event.proto";
+import "state/ssl_gc_common.proto";
 
 // Each UDP packet contains one of these messages.
 message Referee {
@@ -10,6 +11,9 @@ message Referee {
 
     // The match type is a meta information about the current match that helps to process the logs after a competition
     optional MatchType match_type = 19 [default = UNKNOWN_MATCH];
+
+    // The division is a meta information about the current division. Can be used to help processing the logs after a competition and to identify what rules are in effect.
+    optional Division division = 21 [default = DIV_UNKNOWN];
 
     // The UNIX timestamp when the packet was sent, in microseconds.
     // Divide by 1,000,000 to get a time_t.
